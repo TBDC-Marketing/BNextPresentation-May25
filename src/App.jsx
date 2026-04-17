@@ -831,12 +831,17 @@ export default function App() {
       <button
         type="button"
         onClick={toggleFullscreen}
-        className="fixed bottom-6 left-6 z-50 hidden md:flex items-center gap-2 rounded-2xl border border-white/10 bg-[rgba(5,5,5,0.76)] px-4 py-3 text-white shadow-glow backdrop-blur-xl transition hover:border-white/20 hover:bg-[rgba(5,5,5,0.88)]"
+        className={cx(
+          'fixed z-50 hidden md:flex items-center transition-all duration-300',
+          isFullscreen
+            ? 'bottom-3 left-3 gap-1 rounded-lg border border-white/5 bg-[rgba(5,5,5,0.35)] px-2 py-1.5 text-white/30 hover:border-white/15 hover:bg-[rgba(5,5,5,0.6)] hover:text-white/60'
+            : 'bottom-6 left-6 gap-2 rounded-2xl border border-white/10 bg-[rgba(5,5,5,0.76)] px-4 py-3 text-white shadow-glow backdrop-blur-xl hover:border-white/20 hover:bg-[rgba(5,5,5,0.88)]'
+        )}
         aria-label={isFullscreen ? 'Exit fullscreen (F)' : 'Enter fullscreen (F)'}
         title="Press F to toggle"
       >
         <FullscreenIcon isFullscreen={isFullscreen} />
-        <span className="text-sm text-white/75">{isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}</span>
+        {!isFullscreen && <span className="text-sm text-white/75">Fullscreen</span>}
       </button>
 
       <main>
