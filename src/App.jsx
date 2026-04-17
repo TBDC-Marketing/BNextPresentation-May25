@@ -785,39 +785,30 @@ export default function App() {
         return;
       }
 
-      if (arrowNavEnabled && !isTextInput && !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey) {
-        if (event.key === 'ArrowRight' && currentIndex < sectionIds.length - 1) {
+      if (!isTextInput && !event.metaKey && !event.ctrlKey && !event.altKey && !event.shiftKey) {
+        let targetIndex = null;
+
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === 'PageDown') {
+          targetIndex = currentIndex + 1;
+        }
+
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp' || event.key === 'PageUp') {
+          targetIndex = currentIndex - 1;
+        }
+
+        if (event.key === 'Home') targetIndex = 0;
+        if (event.key === 'End') targetIndex = sectionIds.length - 1;
+
+        if (event.key === ' ') {
+          targetIndex = event.shiftKey ? currentIndex - 1 : currentIndex + 1;
+        }
+
+        if (targetIndex !== null) {
           event.preventDefault();
-          goToSection(currentIndex + 1);
+          goToSection(targetIndex);
           return;
         }
-        if (event.key === 'ArrowLeft' && currentIndex > 0) {
-          event.preventDefault();
-          goToSection(currentIndex - 1);
-          return;
-        }
       }
-
-      const isInteractive = active?.closest?.('button, a, input, textarea, select');
-      if (isInteractive) return;
-
-      let targetIndex = null;
-
-      if (event.key === 'ArrowDown' || event.key === 'PageDown' || (event.key === ' ' && !event.shiftKey)) {
-        targetIndex = currentIndex + 1;
-      }
-
-      if (event.key === 'ArrowUp' || event.key === 'PageUp' || (event.key === ' ' && event.shiftKey)) {
-        targetIndex = currentIndex - 1;
-      }
-
-      if (event.key === 'Home') targetIndex = 0;
-      if (event.key === 'End') targetIndex = sectionIds.length - 1;
-
-      if (targetIndex === null) return;
-
-      event.preventDefault();
-      goToSection(targetIndex);
     };
 
     window.addEventListener('keydown', handleKeyDown);
