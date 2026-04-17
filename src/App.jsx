@@ -141,7 +141,7 @@ function Chip({ children, tone = 'dark' }) {
 
 function SectionRule({ label, tone = 'dark', compact = false }) {
   return (
-    <div className={cx('flex items-center gap-4', compact ? 'mb-2' : 'mb-8 md:mb-10')}>
+    <div className={cx('flex items-center gap-4', compact ? 'mb-2' : 'mb-4 md:mb-6')}>
       <Chip tone={tone}>{label}</Chip>
       <div className={cx('h-px flex-1', tone === 'dark' ? 'bg-white/15' : 'bg-[var(--navy)]/10')} />
     </div>
@@ -172,7 +172,7 @@ function SlideSection({ id, mode = 'light', compact = false, noOverflowHidden = 
       id={id}
       tabIndex={-1}
       className={cx(
-        'relative snap-start snap-always px-3 pb-24 pt-3 md:px-6 md:py-6 lg:h-[100svh] lg:min-h-[100svh] lg:px-8 lg:py-6',
+        'relative snap-start snap-always px-3 pb-24 pt-3 md:px-6 md:py-6 lg:h-[100dvh] lg:min-h-[100dvh] lg:px-8 lg:py-6',
         !noOverflowHidden && 'lg:overflow-hidden'
       )}
     >
@@ -228,13 +228,13 @@ function FounderPhotoPlaceholder({ name, company }) {
     .toUpperCase();
 
   return (
-    <div className="relative flex h-full min-h-[20rem] items-center justify-center overflow-hidden rounded-[28px] bg-[var(--navy)]">
+    <div className="relative flex h-full min-h-[12rem] lg:min-h-0 lg:flex-1 items-center justify-center overflow-hidden rounded-[28px] bg-[var(--navy)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,202,5,0.12),transparent_50%)]" />
-      <span className="font-display text-[clamp(4rem,8svmin,8rem)] uppercase leading-none text-white/10">
+      <span className="font-display text-[clamp(2.5rem,8svmin,8rem)] uppercase leading-none text-white/10">
         {initials}
       </span>
       <div className="absolute bottom-4 left-5 right-5 z-10">
-        <p className="font-display text-[clamp(1.4rem,2.2svmin,2rem)] uppercase leading-none text-white/25">
+        <p className="font-display text-[clamp(0.95rem,2.2svmin,2rem)] uppercase leading-none text-white/25">
           {company}
         </p>
       </div>
@@ -251,7 +251,7 @@ function FounderPhoto({ src, alt, company, name }) {
   }
 
   return (
-    <div className="relative h-full min-h-[20rem] overflow-hidden rounded-[28px]">
+    <div className="relative h-full min-h-[12rem] lg:min-h-0 lg:flex-1 overflow-hidden rounded-[28px]">
       <img
         src={`${base}${src}`}
         alt={alt}
@@ -261,7 +261,7 @@ function FounderPhoto({ src, alt, company, name }) {
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(10,10,10,0.95)_0%,rgba(10,10,10,0.4)_35%,transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,202,5,0.12),transparent_50%)]" />
       <div className="absolute bottom-4 left-5 right-5 z-10">
-        <p className="font-display text-[clamp(1.4rem,2.2svmin,2rem)] uppercase leading-none text-white/25">
+        <p className="font-display text-[clamp(0.95rem,2.2svmin,2rem)] uppercase leading-none text-white/25">
           {company}
         </p>
       </div>
@@ -280,7 +280,7 @@ function StorySlideRedesigned({ story }) {
         <div className="mt-3 flex min-h-0 flex-1">
           <div className="grid h-full w-full grid-cols-12 gap-5 lg:gap-6">
 
-            <div className="col-span-12 max-h-[14rem] lg:col-span-4 lg:max-h-none">
+            <div className="col-span-12 min-h-[10rem] max-h-[14rem] lg:col-span-4 lg:max-h-none">
               <FounderPhoto
                 src={story.founderPhoto}
                 alt={`${story.name}, founder of ${story.company}`}
@@ -295,16 +295,16 @@ function StorySlideRedesigned({ story }) {
                 <p className="text-[0.78rem] uppercase tracking-[0.22em] text-white/50">
                   {story.name}
                 </p>
-                <h2 className="mt-1 font-display text-[clamp(2.8rem,5.5svmin,5.2rem)] uppercase leading-[0.90] tracking-[-0.02em] text-white">
+                <h2 className="mt-1 font-display text-[clamp(1.8rem,5.5svmin,5.2rem)] uppercase leading-[0.90] tracking-[-0.02em] text-white">
                   {story.company}
                 </h2>
-                <p className="mt-2 text-[clamp(0.85rem,1svmin,0.95rem)] uppercase tracking-[0.15em] text-white/35">
+                <p className="mt-2 text-[clamp(0.6rem,1svmin,0.95rem)] uppercase tracking-[0.15em] text-white/35">
                   {story.companyDescription}
                 </p>
               </div>
 
               <div className="mt-4 flex-none">
-                <p className="max-w-3xl text-[clamp(1.2rem,1.6svmin,1.5rem)] leading-[1.5] text-[var(--yellow)]">
+                <p className="max-w-3xl text-[clamp(0.85rem,1.6svmin,1.5rem)] leading-[1.5] text-[var(--yellow)]">
                   {story.pullQuote}
                 </p>
               </div>
@@ -317,7 +317,7 @@ function StorySlideRedesigned({ story }) {
                   <p className="mb-3 flex-none border-b border-white/8 pb-2 text-[0.78rem] uppercase tracking-[0.22em] text-white/40">
                     Then
                   </p>
-                  <p className="min-h-0 flex-1 text-[clamp(1rem,1.15svmin,1.15rem)] leading-[1.65] text-white/70">
+                  <p className="min-h-0 flex-1 text-[clamp(0.7rem,1.15svmin,1.15rem)] leading-[1.65] text-white/70">
                     {story.thenSnapshot}
                   </p>
                 </div>
@@ -326,7 +326,7 @@ function StorySlideRedesigned({ story }) {
                   <p className="mb-3 flex-none border-b border-[var(--yellow)]/15 pb-2 text-[0.78rem] uppercase tracking-[0.22em] text-[var(--yellow)]/60">
                     Now
                   </p>
-                  <p className="min-h-0 flex-1 text-[clamp(1rem,1.15svmin,1.15rem)] leading-[1.65] text-white/90">
+                  <p className="min-h-0 flex-1 text-[clamp(0.7rem,1.15svmin,1.15rem)] leading-[1.65] text-white/90">
                     {story.nowSnapshot}
                   </p>
                 </div>
@@ -359,7 +359,7 @@ function MentorCard({ mentor }) {
     <article className="rounded-[28px] border border-[var(--navy)]/10 bg-white/80 p-5 shadow-panel backdrop-blur-sm">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="font-display text-[clamp(2rem,3svmin,2.6rem)] uppercase leading-[0.94] text-[var(--navy)]">
+          <p className="font-display text-[clamp(1.3rem,3svmin,2.6rem)] uppercase leading-[0.94] text-[var(--navy)]">
             {mentor.name}
           </p>
           <p className="mt-2 text-[0.75rem] uppercase tracking-[0.2em] text-[var(--orange)]">{mentor.title}</p>
@@ -401,7 +401,7 @@ function QuoteBlock({ quote, attribution, role, compact = false, tight = false }
       <p
         className={cx(
           'leading-snug text-white',
-          tight ? 'mt-1.5 text-[clamp(0.85rem,1.15svmin,1.05rem)]' : compact ? 'mt-3 text-[clamp(1.25rem,1.8svmin,1.65rem)]' : 'mt-3 text-[clamp(1.45rem,2.3svmin,2.4rem)]'
+          tight ? 'mt-1.5 text-[clamp(0.6rem,1.15svmin,1.05rem)]' : compact ? 'mt-3 text-[clamp(0.85rem,1.8svmin,1.65rem)]' : 'mt-3 text-[clamp(1rem,2.3svmin,2.4rem)]'
         )}
       >
         {quote}
@@ -455,7 +455,7 @@ function AnimatedNumber({ value, suffix = '', prefersReducedMotion }) {
 function MetricCard({ metric, prefersReducedMotion }) {
   return (
     <article className="rounded-[26px] border border-[var(--navy)]/10 bg-white/80 p-5 shadow-panel backdrop-blur-sm">
-      <div className="font-display text-[clamp(2.8rem,5svmin,5rem)] uppercase leading-none tracking-[-0.03em] text-[var(--navy)]">
+      <div className="font-display text-[clamp(1.8rem,5svmin,5rem)] uppercase leading-none tracking-[-0.03em] text-[var(--navy)]">
         <AnimatedNumber
           value={metric.value}
           suffix={metric.suffix ?? ''}
@@ -842,10 +842,10 @@ export default function App() {
 
             {/* Flexible main: headline + body */}
             <div className="flex min-h-0 flex-1 flex-col">
-              <h1 className="mt-3 flex-none font-display text-[clamp(2.75rem,5.5svmin,5.5rem)] uppercase leading-[0.88] tracking-[-0.03em] text-white lg:mt-4">
+              <h1 className="mt-3 flex-none font-display text-[clamp(1.75rem,5.5svmin,5.5rem)] uppercase leading-[0.88] tracking-[-0.03em] text-white lg:mt-4">
                 From potential to traction
               </h1>
-              <p className="mt-3 max-w-2xl flex-1 text-[clamp(1rem,1.35svmin,1.2rem)] leading-[1.4] text-white/75 lg:mt-4">
+              <p className="mt-3 max-w-2xl flex-1 text-[clamp(0.7rem,1.35svmin,1.2rem)] leading-[1.4] text-white/75 lg:mt-4">
                 {anchorLine}
               </p>
             </div>
@@ -858,8 +858,8 @@ export default function App() {
                     key={pillar.title}
                     className="rounded-xl border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm"
                   >
-                    <p className="font-display text-[clamp(1.15rem,1.8svmin,1.35rem)] uppercase leading-none text-[var(--yellow)]">{pillar.title}</p>
-                    <p className="mt-2 text-[clamp(0.8rem,0.95svmin,0.9rem)] leading-[1.35] text-white/72">{pillar.body}</p>
+                    <p className="font-display text-[clamp(0.8rem,1.8svmin,1.35rem)] uppercase leading-none text-[var(--yellow)]">{pillar.title}</p>
+                    <p className="mt-2 text-[clamp(0.55rem,0.95svmin,0.9rem)] leading-[1.35] text-white/72">{pillar.body}</p>
                   </div>
                 ))}
               </div>
@@ -869,14 +869,14 @@ export default function App() {
 
         {/* 2. Early momentum / metrics */}
         <SlideSection id="evidence-outcomes" mode="light">
-          <div className="grid h-full gap-8 md:grid-cols-12 md:gap-8">
+          <div className="grid h-full gap-4 md:grid-cols-12 md:gap-6">
             <div className="flex h-full min-h-0 flex-col justify-between md:col-span-4">
               <div>
                 <SectionRule label="Evidence and outcomes" tone="light" />
-                <h2 className="max-w-2xl font-display text-[clamp(2.5rem,4.8svmin,5rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
+                <h2 className="max-w-2xl font-display text-[clamp(1.6rem,4.8svmin,5rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
                   Early momentum, made visible.
                 </h2>
-                <p className="mt-6 max-w-xl text-[clamp(1rem,1.12svmin,1.08rem)] leading-8 text-[var(--navy)]/80">
+                <p className="mt-6 max-w-xl text-[clamp(0.7rem,1.12svmin,1.08rem)] leading-8 text-[var(--navy)]/80">
                   Early indicators show strong engagement, increasing demand, and expanding participation across the BNext ecosystem. The numbers matter because they point to founder progress, ecosystem activation, and a stronger regional pipeline.
                 </p>
               </div>
@@ -911,14 +911,14 @@ export default function App() {
 
         {/* 17. Mentor network */}
         <SlideSection id="mentor-network" mode="light">
-          <div className="grid h-full gap-8 md:grid-cols-12 md:gap-8">
+          <div className="grid h-full gap-4 md:grid-cols-12 md:gap-6">
             <div className="flex h-full min-h-0 flex-col justify-between md:col-span-4">
               <div>
                 <SectionRule label="Mentor network and support model" tone="light" />
-                <h2 className="max-w-2xl font-display text-[clamp(2.5rem,4.8svmin,5rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
+                <h2 className="max-w-2xl font-display text-[clamp(1.6rem,4.8svmin,5rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
                   Experienced operators, directly engaged.
                 </h2>
-                <p className="mt-6 max-w-xl text-[clamp(1rem,1.12svmin,1.1rem)] leading-8 text-[var(--navy)]/80">
+                <p className="mt-6 max-w-xl text-[clamp(0.7rem,1.12svmin,1.1rem)] leading-8 text-[var(--navy)]/80">
                   Unlike programs built around limited advisory touchpoints, BNext connects founders to mentors who actively shape decisions, accelerate learning, and open doors to critical opportunities.
                 </p>
               </div>
@@ -950,17 +950,17 @@ export default function App() {
 
         {/* 18. Access gap */}
         <SlideSection id="access-gap" mode="light">
-          <div className="grid h-full gap-8 md:grid-cols-12 md:gap-8">
+          <div className="grid h-full gap-4 md:grid-cols-12 md:gap-6">
             <div className="md:col-span-6">
               <SectionRule label="Program overview and purpose" tone="light" />
-              <h2 className="max-w-3xl font-display text-[clamp(2.7rem,5svmin,5.4rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
+              <h2 className="max-w-3xl font-display text-[clamp(1.75rem,5svmin,5.4rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
                 {accessGap.headlineA}
               </h2>
-              <h3 className="mt-2 max-w-3xl font-display text-[clamp(2.2rem,4svmin,4.2rem)] uppercase leading-[0.95] tracking-[-0.025em] text-[var(--orange)]">
+              <h3 className="mt-2 max-w-3xl font-display text-[clamp(1.4rem,4svmin,4.2rem)] uppercase leading-[0.95] tracking-[-0.025em] text-[var(--orange)]">
                 {accessGap.headlineB}
               </h3>
 
-              <div className="mt-6 max-w-2xl space-y-4 text-[clamp(1rem,1.15svmin,1.12rem)] leading-8 text-[var(--navy)]/80">
+              <div className="mt-6 max-w-2xl space-y-4 text-[clamp(0.7rem,1.15svmin,1.12rem)] leading-8 text-[var(--navy)]/80">
                 {accessGap.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -983,7 +983,7 @@ export default function App() {
                   <p className="text-[0.72rem] uppercase tracking-[0.22em] text-[var(--orange)]">Why BNext matters</p>
                   <div className="mt-4 grid gap-5 md:grid-cols-[1fr_0.9fr] md:items-end">
                     <div>
-                      <p className="font-display text-[clamp(2.2rem,4svmin,3.8rem)] uppercase leading-[0.94] text-[var(--navy)]">
+                      <p className="font-display text-[clamp(1.4rem,4svmin,3.8rem)] uppercase leading-[0.94] text-[var(--navy)]">
                         High-potential ideas move faster when access is intentional.
                       </p>
                       <p className="mt-4 max-w-xl text-base leading-7 text-[var(--navy)]/78">
@@ -1006,14 +1006,14 @@ export default function App() {
 
         {/* 19. Ecosystem role */}
         <SlideSection id="ecosystem-role" mode="light">
-          <div className="grid h-full gap-8 md:grid-cols-12 md:gap-8">
+          <div className="grid h-full gap-4 md:grid-cols-12 md:gap-6">
             <div className="flex h-full min-h-0 flex-col justify-between md:col-span-5">
               <div>
                 <SectionRule label="The role BNext plays in the ecosystem" tone="light" />
-                <h2 className="max-w-3xl font-display text-[clamp(2.6rem,5svmin,5.1rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
+                <h2 className="max-w-3xl font-display text-[clamp(1.7rem,5svmin,5.1rem)] uppercase leading-[0.92] tracking-[-0.03em] text-[var(--navy)]">
                   Infrastructure, not only programming.
                 </h2>
-                <p className="mt-6 max-w-2xl text-[clamp(1rem,1.15svmin,1.12rem)] leading-8 text-[var(--navy)]/80">
+                <p className="mt-6 max-w-2xl text-[clamp(0.7rem,1.15svmin,1.12rem)] leading-8 text-[var(--navy)]/80">
                   Over the past year, BNext has become a trusted hub where immigrant founders, mentors, and ecosystem partners come together. It shortens the time it takes for founders to access the relationships, guidance, and opportunities that usually take years to build.
                 </p>
               </div>
@@ -1075,10 +1075,10 @@ export default function App() {
             <div className="flex min-h-0 flex-col md:col-span-6">
               <div className="flex-none">
                 <SectionRule label="Community and ecosystem engagement" tone="light" compact />
-                <h2 className="mt-3 max-w-3xl font-display text-[clamp(1.85rem,3.6svmin,3.4rem)] uppercase leading-[0.88] tracking-[-0.03em] text-[var(--navy)] lg:mt-4">
+                <h2 className="mt-3 max-w-3xl font-display text-[clamp(1.2rem,3.6svmin,3.4rem)] uppercase leading-[0.88] tracking-[-0.03em] text-[var(--navy)] lg:mt-4">
                   Support extends beyond the startup itself.
                 </h2>
-                <p className="mt-3 max-w-2xl text-[clamp(0.85rem,1.05svmin,0.98rem)] leading-[1.45] text-[var(--navy)]/80 lg:mt-4">
+                <p className="mt-3 max-w-2xl text-[clamp(0.6rem,1.05svmin,0.98rem)] leading-[1.45] text-[var(--navy)]/80 lg:mt-4">
                   Founders are not only building companies &mdash; they are navigating a new country, new systems, and new networks. By supporting both business development and day-to-day integration, BNext makes it easier to focus on long-term growth.
                 </p>
               </div>
@@ -1097,7 +1097,7 @@ export default function App() {
                       className="rounded-xl border border-[var(--navy)]/10 bg-white/80 p-3 shadow-panel"
                     >
                       <p className="text-[0.62rem] uppercase tracking-[0.2em] text-[var(--orange)]">Support layer</p>
-                      <h3 className="mt-1.5 font-display text-[clamp(0.95rem,1.35svmin,1.15rem)] uppercase leading-[0.95] text-[var(--navy)]">
+                      <h3 className="mt-1.5 font-display text-[clamp(0.65rem,1.35svmin,1.15rem)] uppercase leading-[0.95] text-[var(--navy)]">
                         {item.title}
                       </h3>
                       <p className="mt-1.5 text-[0.75rem] leading-[1.35] text-[var(--navy)]/78">{item.body}</p>
@@ -1127,10 +1127,10 @@ export default function App() {
 
               {/* Flexible main text */}
               <div className="flex min-h-0 flex-1 flex-col">
-                <h2 className="mt-3 flex-none font-display text-[clamp(2.25rem,4.5svmin,4.5rem)] uppercase leading-[0.88] tracking-[-0.03em] text-white lg:mt-4">
+                <h2 className="mt-3 flex-none font-display text-[clamp(1.5rem,4.5svmin,4.5rem)] uppercase leading-[0.88] tracking-[-0.03em] text-white lg:mt-4">
                   Access can change what happens next.
                 </h2>
-                <div className="mt-3 flex-1 space-y-2 text-[clamp(0.9rem,1.05svmin,1rem)] leading-[1.45] text-white/78 lg:mt-4">
+                <div className="mt-3 flex-1 space-y-2 text-[clamp(0.65rem,1.05svmin,1rem)] leading-[1.45] text-white/78 lg:mt-4">
                   {closingParagraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
@@ -1156,7 +1156,7 @@ export default function App() {
                 <div className="relative z-10">
                   <Chip tone="dark">Closing frame</Chip>
                   <p className="mt-3 text-[0.68rem] uppercase tracking-[0.22em] text-white/55">Regional significance</p>
-                  <p className="mt-2 font-display text-[clamp(1.5rem,2.5svmin,2rem)] uppercase leading-[0.94] text-[var(--yellow)]">
+                  <p className="mt-2 font-display text-[clamp(1rem,2.5svmin,2rem)] uppercase leading-[0.94] text-[var(--yellow)]">
                     Brampton Next helps globally trained founders fully participate in the region's innovation economy.
                   </p>
                 </div>
