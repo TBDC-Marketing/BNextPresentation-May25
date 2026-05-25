@@ -71,7 +71,12 @@ function FounderPhoto({ story }) {
       {missing ? (
         <b>{initials}</b>
       ) : (
-        <img src={`${base}${story.photo}`} alt={`${story.name}, ${story.company}`} onError={() => setMissing(true)} />
+        <img
+          src={`${base}${story.photo}`}
+          alt={`${story.name}, ${story.company}`}
+          style={{ objectPosition: story.photoPosition || 'top center' }}
+          onError={() => setMissing(true)}
+        />
       )}
     </div>
   );
