@@ -130,7 +130,7 @@ export const founderStories = [
     company: 'Treepz',
     name: 'Onyeka Akumah',
     photo: 'FounderPics/Treepz_Onyeka_Akumah.png',
-    photoPosition: 'center 62%',
+    photoPosition: 'center 34%',
     then: 'African mobility company entering North America',
     now: 'now has Brampton HQ + $500K project',
     fullThen: 'Treepz had international experience but needed Canadian market presence, partnerships, and government relationships.',
